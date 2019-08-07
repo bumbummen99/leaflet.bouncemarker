@@ -1,9 +1,16 @@
 # Bouncemarker plugin for Leaflet
 
+This is a fork/mirror of the [maximeh's BounceMarker](https://github.com/maximeh/leaflet.bouncemarker/) plugin that can be installed with npm.
+
 This little plugin for [Leaflet](http://www.leafletjs.com) will make a Marker
 bounce when you add it on a map on whenever you want it to.
 
 Watch the [demo](http://maximeh.github.com/leaflet.bouncemarker/).
+
+## Install
+```console
+$ npm i --save @skyraptor/leaflet.bouncemarker
+```
 
 # Version
 
