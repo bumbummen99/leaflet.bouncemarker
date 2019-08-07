@@ -1,5 +1,5 @@
 {
-  "name": "leaflet.bouncemarker",
+  "name": "@skyraptor/leaflet.bouncemarker",
   "version": "1.2.0",
   "description": "Make a marker bounce when you add it to a map.",
   "main": "bouncemarker.js",
