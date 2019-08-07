@@ -6,13 +6,13 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/maximeh/leaflet.bouncemarker"
+    "url": "https://github.com/bumbummen99/leaflet.bouncemarker"
   },
   "author": "maximeh",
   "bugs": {
-    "url": "https://github.com/maximeh/leaflet.bouncemarker/issues"
+    "url": "https://github.com/bumbummen99/leaflet.bouncemarker/issues"
   },
-  "homepage": "https://github.com/maximeh/leaflet.bouncemarker",
+  "homepage": "https://github.com/bumbummen99/leaflet.bouncemarker",
   "devDependencies": {
     "eslint": "^4.19.1",
     "eslint-config-google": "^0.9.1"
