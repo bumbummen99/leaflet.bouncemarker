@@ -1,6 +1,6 @@
-# Bouncemarker plugin for Leaflet
+# Leaflet Bouncemarker
 
-This is a fork/mirror of the [maximeh's BounceMarker](https://github.com/maximeh/leaflet.bouncemarker/) plugin that can be installed with npm.
+This is a fork of the [maximeh's BounceMarker](https://github.com/maximeh/leaflet.bouncemarker/) plugin.
 
 This little plugin for [Leaflet](http://www.leafletjs.com) will make a Marker
 bounce when you add it on a map on whenever you want it to.
@@ -8,17 +8,12 @@ bounce when you add it on a map on whenever you want it to.
 Watch the [demo](http://maximeh.github.com/leaflet.bouncemarker/).
 
 ## Install
+
+Use the following command in order to install the latest compatible version of the package.
+
 ```console
-$ npm i --save @skyraptor/leaflet.bouncemarker
+npm i --save @skyraptor/leaflet.bouncemarker
 ```
-
-# Version
-
-Things may break in master, so please don't use this in production.
-There is [tags](https://github.com/maximeh/leaflet.bouncemarker/tags) which can
-be used in production.
-
-Last stable: [v1.2](https://github.com/maximeh/leaflet.bouncemarker/releases/tag/v1.2)
 
 # Usage
 
@@ -27,26 +22,50 @@ Let's consider we have a Leaflet map:
 ```javascript
 var map = L.map('map');
 L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: 'Map data &copy; <a href="http://www.osm.org">OpenStreetMap</a>'
+    attribution: 'Map data &copy; <a href="http://www.osm.org">OpenStreetMap</a>'
 }).addTo(map);
 ```
 
-## onAdd
+## Enable
+
+In order to enable the plugin for a marker the bouncemarker option has to be set to true.
+
+```javascript
+L.marker([48.85, 2.35], {
+    bouncemarker: true,
+}).addTo(map);
+```
+
+## Bounce onAdd
 
 Make your marker bounce when you add them to a map.
 
 ```javascript
-L.marker([48.85, 2.35],
-  {
-    boolean bounceOnAdd,
-    object bounceOnAddOptions,
-    function bounceOnAddCallback
-  }).addTo(map);
+L.marker([48.85, 2.35], {
+    bouncemarker: true,
+    bounceOnAddOptions: {},
+    bounceOnAddCallback: callback,
+}).addTo(map);
 ```
+
+Or exclude it from OnAdd bouncing:
+
+```javascript
+L.marker([48.85, 2.35], {
+    bouncemarker: true,
+    bounceOnAdd: false,
+}).addTo(map);
+```
+
+# Options
+
+### bouncemarker (boolean)
+
+If true, the plugin will be enabled for the marker and it will be able to bounce. Default to false.
 
 ### bounceOnAdd (boolean) (optional)
 
-If true, your marker will bounce when added to the map. Default to false.
+If true, your marker will bounce when added to the map. Default to true.
 
 ### bounceOnAddOptions (object) (optional)
 
@@ -71,12 +90,17 @@ animation.
 
 **Example:**
 ```javascript
-L.marker([48.85, 2.35],
-  {
-    bounceOnAdd: true,
-    bounceOnAddOptions: {duration: 500, height: 100, loop: 2},
-    bounceOnAddCallback: function() {console.log("done");}
-  }).addTo(map);
+L.marker([48.85, 2.35], {
+    bouncemarker: true,
+    bounceOnAddOptions: {
+        duration: 500, 
+        height: 100, 
+        loop: 2
+    },
+    bounceOnAddCallback: () => {
+        console.log("done");
+    }
+}).addTo(map);
 ```
 
 ## bounce
@@ -84,14 +108,17 @@ L.marker([48.85, 2.35],
 Make a marker bounce at anytime you wish.
 
 ```javascript
-bounce(object options, function callback);
+bounce(options, callback);
 ```
 
 **Example:**
 ```javascript
 marker = new L.Marker([48.85, 2.35], {bounceOnAdd: true}).addTo(map);
-marker.on('click', function () {
-    marker.bounce({duration: 500, height: 100});
+marker.on('click', event => {
+    marker.bounce({
+        duration: 500, 
+        height: 100
+    });
 });
 ```
 
@@ -118,10 +145,15 @@ animation.
 
 **Example:**
 ```javascript
-marker.bounce({duration: 500, height: 100}, function(){console.log("done")});
+marker.bounce({
+  duration: 500,
+  height: 100
+}, () => {
+  console.log("done");
+});
 ```
 
 ## stopBounce
 
-Will stop the animation when called; the marker will be positionned at its
+Will stop the animation when called; the marker will be positionned at it's
 destination.
